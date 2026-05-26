@@ -54,7 +54,7 @@ const state = {
 // Character — persisted to localStorage
 const character = {
   get xp()    { return parseInt(localStorage.getItem("socra_xp")  || "0"); },
-  get avatar() { return SOCRA_AVATAR; },                                     // always 🦉
+  get avatar() { return SOCRA_AVATAR; },                 
   get name()  { return localStorage.getItem("socra_name")          || "Explorer"; },
 
   addXP(n) {
@@ -145,7 +145,7 @@ function updateCharacterDisplay() {
   if (modalLabel) {
     modalLabel.textContent = next
       ? `${next.xpRequired - xp} XP to ${next.name}`
-      : "🎉 Max level — you're a legend!";
+      : "Max level — you're a legend!";
   }
 }
 
@@ -175,7 +175,7 @@ function showXPFloat(text) {
 
 function showLevelUp(level) {
   document.getElementById("levelupEmoji").textContent = level.badge;
-  document.getElementById("levelupSub").textContent   = `You're now a ${level.name}! Ripper! 🎉`;
+  document.getElementById("levelupSub").textContent   = `You're now a ${level.name}!`;
   levelupToast.hidden = false;
   // Next frame so the transition fires after display kicks in
   requestAnimationFrame(() => {
@@ -268,7 +268,7 @@ async function checkHealth() {
     const res  = await fetch(ENDPOINTS.health, { signal: AbortSignal.timeout(5000) });
     const data = await res.json();
     if (!data.gemini_ready) {
-      showBanner("warning", "⚙️", "Backend is up, but the Gemini API key isn't set yet.");
+      showBanner("warning", "Backend is up, but the Gemini API key isn't set yet.");
     }
   } catch { /* non-fatal */ }
 }
@@ -304,7 +304,7 @@ async function handleSend() {
     appendAIMessage(response.response, response.suggestions || []);
 
     // Award XP for asking a question
-    addXP(XP_PER_MESSAGE, `+${XP_PER_MESSAGE} XP 🎉`);
+    addXP(XP_PER_MESSAGE, `+${XP_PER_MESSAGE} XP`);
 
     state.sessionId = response.session_id;
     localStorage.setItem("socra_session_id", state.sessionId);
@@ -370,7 +370,7 @@ function handleSendError(err) {
     api_error:   err.message || "Something went wrong. Give it another go!",
   };
   const type    = err.type || "api_error";
-  const icon    = type === "rate_limit" ? "⏳" : "⚠️";
+  const icon    = type === "rate_limit" ? "time" : "warning";
   const variant = type === "rate_limit" ? "warning" : "error";
   showBanner(variant, icon, msgs[type] || msgs.api_error);
 }
@@ -435,7 +435,7 @@ function appendSuggestions(suggestions) {
       sendBtn.disabled = false;
       input.focus();
       // Small curiosity bonus
-      addXP(XP_PER_SUGGESTION, `+${XP_PER_SUGGESTION} XP — curious! 🔍`);
+      addXP(XP_PER_SUGGESTION, `+${XP_PER_SUGGESTION} XP — curious!`);
       handleSend();
     });
   });
