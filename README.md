@@ -42,7 +42,7 @@ venv\Scripts\activate
 ### 3. Install dependencies
 
 ```bash
-pip install -r backend/requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 4. Download the spaCy language model
@@ -53,11 +53,13 @@ python -m spacy download en_core_web_sm
 
 ### 5. Configure environment variables
 
+Create a `.env` file in the project root:
+
 ```bash
-cp backend/.env.example backend/.env
+cp .env.example .env
 ```
 
-Open `backend/.env` and add your Gemini API key:
+Or create it manually and add your Gemini API key:
 
 ```
 GEMINI_API_KEY=your_actual_api_key_here
@@ -66,7 +68,6 @@ GEMINI_API_KEY=your_actual_api_key_here
 ### 6. Run the development server
 
 ```bash
-cd backend
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
