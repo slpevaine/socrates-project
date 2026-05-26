@@ -1,6 +1,6 @@
 # Socratic AI — Basic Socratic Dialogue Simulation
 
-**[→ Live Demo](https://your-app.vercel.app)** ← replace after deployment
+**Live Demo: https://socrates-project-m8dq.vercel.app/**
 
 ---
 
