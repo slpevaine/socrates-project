@@ -10,7 +10,6 @@
 - **Exponential backoff + jitter** for rate limit handling (both server and client side)
 - **NLP preprocessing** via spaCy: tokenization, lemmatization, NER, sentiment analysis, key concept extraction
 - **Multi-turn conversation** with session history (keeps last 20 turns)
-- **Polished dark UI** with ambient animations and responsive design
 - **Structured error handling** for rate limits (429), safety filters, API errors, and timeouts
 
 ## Local Setup
